@@ -1,6 +1,6 @@
 {
   "name": "@mjt-services/tunnel-service-2025",
-  "version": "2025.1.14-1121",
+  "version": "2025.1.23-1025",
   "sideEffects": false,
   "description": "tunnel service",
   "main": "./dist/index.js",

@@ -11,10 +11,11 @@ fi
 
 docker stop "${NAME}" || true
 
-# docker run -it --rm -d \
-docker run -it --rm \
+# docker run -it --rm \
+docker run -it --rm -d \
   --name "${NAME}" \
   --network "${NETWORK_NAME}" \
   --env-file "${SCRIPT_DIR}/../.env" \
   -v "${SCRIPT_DIR}/../.ssh:/root/.ssh" \
-   "${IMAGE_TAG}"
+  -p 8080:8080 \
+  "${IMAGE_TAG}"

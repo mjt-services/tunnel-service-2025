@@ -5,6 +5,7 @@ import { proc } from "./common/proc";
 import { validateRequiredFields } from "./common/validateRequiredFields";
 import { nextLocalPort } from "./nextLocalPort";
 import { TunnelMap } from "./TunnelMap";
+import { updateSshFingerprint } from "./ssh/updateSshFingerprint";
 
 export const tunnelAddListener: ConnectionListener<
   TunnelConnectionMap,
@@ -32,19 +33,23 @@ export const tunnelAddListener: ConnectionListener<
     ? localPort
     : await nextLocalPort();
 
+  await updateSshFingerprint(remoteHost, remotePort);
+
   // ssh -i /root/.ssh/id_rsa -L 8080:localhost:9000 -N -f user@remote-host -p 22
-  const controller = proc("vastai", { verbose: true })(
-    "ssh",
+  const controller = proc("ssh", { verbose: true })(
     "-i",
     privateKeyPath,
     "-L",
-    `${realizedLocalPort}:${targetHost}:${targetPort}`,
+    `127.0.0.1:${realizedLocalPort}:${targetHost}:${targetPort}`,
     "-N",
     "-f",
     `${remoteUser}@${remoteHost}`,
     `-p ${remotePort}`,
     ...options
   );
+  controller.on("error", (err) => {
+    console.error(err);
+  });
   TunnelMap[name] = { controller, port: realizedLocalPort };
   return { port: realizedLocalPort, name };
 };

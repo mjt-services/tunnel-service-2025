@@ -18,4 +18,5 @@ docker run -it --rm -d \
   --env-file "${SCRIPT_DIR}/../.env" \
   -v "${SCRIPT_DIR}/../.ssh:/root/.ssh" \
   -p 8080:8080 \
+  -p 1024:1024 \
   "${IMAGE_TAG}"

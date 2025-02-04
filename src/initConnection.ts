@@ -4,9 +4,9 @@ import type { Env } from "./Env";
 import { assertValue } from "@mjt-engine/assert";
 import type { TunnelConnectionMap } from "@mjt-services/tunnel-common-2025";
 import { getEnv } from "./getEnv";
-import { tunnelAddListener } from "./tunnelAddListener";
-import { tunnelRemoveListener } from "./tunnelRemoveListener";
-import { tunnelResolveListener } from "./tunnelResolveListener";
+import { tunnelAddListener } from "./listener/tunnelAddListener";
+import { tunnelRemoveListener } from "./listener/tunnelRemoveListener";
+import { tunnelResolveListener } from "./listener/tunnelResolveListener";
 
 export const initConnection = async () => {
   const env = getEnv();

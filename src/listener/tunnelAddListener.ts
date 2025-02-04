@@ -1,11 +1,11 @@
 import type { ConnectionListener } from "@mjt-engine/message";
 import { isDefined } from "@mjt-engine/object";
 import type { TunnelConnectionMap } from "@mjt-services/tunnel-common-2025";
-import { proc } from "./common/proc";
-import { validateRequiredFields } from "./common/validateRequiredFields";
-import { nextLocalPort } from "./nextLocalPort";
-import { TunnelMap } from "./TunnelMap";
-import { updateSshFingerprint } from "./ssh/updateSshFingerprint";
+import { proc } from "../common/proc";
+import { validateRequiredFields } from "../common/validateRequiredFields";
+import { nextLocalPort } from "../nextLocalPort";
+import { TunnelMap } from "../TunnelMap";
+import { updateSshFingerprint } from "../ssh/updateSshFingerprint";
 
 export const tunnelAddListener: ConnectionListener<
   TunnelConnectionMap,

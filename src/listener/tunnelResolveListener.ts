@@ -1,6 +1,6 @@
 import type { ConnectionListener } from "@mjt-engine/message";
 import type { TunnelConnectionMap } from "@mjt-services/tunnel-common-2025";
-import { TunnelMap } from "./TunnelMap";
+import { TunnelMap } from "../TunnelMap";
 
 
 export const tunnelResolveListener: ConnectionListener<
